@@ -1,0 +1,5 @@
+Making a first floor
+Adding box colliders to everything
+Removing all props and placing new ones from various packages
+Adding colliders to these furniture and adjusting the ones in the walls for the doors
+Setting up the scene out the window by setting the camera by the window and placing things so they looked good from that angle
