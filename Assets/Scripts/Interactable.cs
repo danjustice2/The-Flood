@@ -12,6 +12,8 @@ public class Interactable : MonoBehaviour
 
     bool hasInteracted = false;
 
+    GameManager GameManager;
+
     [HideInInspector] public string ItemName = null;
 
     [SerializeField] GameObject message;
@@ -22,6 +24,11 @@ public class Interactable : MonoBehaviour
         Debug.LogError("No interaction set");
     }
 
+    void Start()
+    {
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+    
     void Update()
     {
         if (isFocus && !hasInteracted)
@@ -37,14 +44,15 @@ public class Interactable : MonoBehaviour
 
     public void FeedbackMessage()
     {
-        if (message != null)
+        /*if (message != null)
         {
-            message.SetActive(true);
+            GameManager.OpenInteractableFeedback(message);
         }
         else
         {
             Debug.LogError("Message is null");
-        }
+        }*/
+        Debug.LogError("Deprecated FeedbackMessage function used");
     }
 
     public bool IsTargeted()

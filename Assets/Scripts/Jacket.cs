@@ -10,13 +10,12 @@ public class Jacket : Interactable
     {
         Debug.Log("Jacket: asking gamemanager to give life jacket");
         GameManager.GiveJacket();
-        FeedbackMessage();
         gameObject.SetActive(false);
     }
 
     void Start()
     {
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         ItemName = "Jacket";
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 }

@@ -62,11 +62,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] float TimeToDeath;
     bool IsFreezing = false;
     float StartTimeToDeath = 30;
-    [SerializeField] Image Blackness;
+    [SerializeField] GameObject Blackness;
 
     [SerializeField] GameObject WelcomeHome;
     [SerializeField] GameObject RainTutorial;
     public GameObject FloodWarningTutorial;
+
+    [SerializeField] GameObject DoorFeedback;
+    [SerializeField] GameObject DoorFeedbackFailed;
+    [SerializeField] GameObject JacketFeedback;
+    [SerializeField] GameObject LifeJacketFeedback;
+    [SerializeField] GameObject AirTankFeedback;
+
     bool Darkening;
     [SerializeField] Light Light;
     string SceneName;
@@ -79,6 +86,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         controls = new InputMaster();
+        Mixer.SetFloat("Lowpass", 22000); // The lowpass effect shouldn't be on on start.
     }
 
     void Start()
@@ -113,7 +121,7 @@ public class GameManager : MonoBehaviour
         {
             UnderwaterCheck(0.25f); // Check if player is under water.
             AirManagement(); // Manage player's air
-            ExposureManagement(); // Manage exposure to the elements. Stuff like, is the player standing in the rain etc.
+            if (!FloodFinished) { ExposureManagement(); } // Manage exposure to the elements. Stuff like, is the player standing in the rain etc.
 
             if (TimeUntilStart > 0)
             // Count down on the timer to start the flood.
@@ -127,7 +135,7 @@ public class GameManager : MonoBehaviour
                 TimeUntilWarning -= Time.deltaTime;
             }
 
-            if (TimeUntilStart < RainStart && RainManager.GetComponent<RainScript>().RainIntensity < 1f)
+            if (TimeUntilStart < RainStart && RainManager.GetComponent<RainScript>().RainIntensity < 1f && !FloodFinished)
             // We start the rain a little bit before the flood starts so it doesn't seem so abrupt.
             {
                 RainManager.GetComponent<RainScript>().RainIntensity = 1f;
@@ -243,11 +251,13 @@ public class GameManager : MonoBehaviour
     public void GiveLifeJacket()
     {
         LifeJacket = true;
+        OpenInteractableFeedback(LifeJacketFeedback);
         Debug.Log("GameManager: Life jacket given");
     }
 
     public void GiveJacket()
     {
+        OpenInteractableFeedback(JacketFeedback);
         StartCoroutine("GiveJacketCoroutine");
     }
 
@@ -277,19 +287,42 @@ public class GameManager : MonoBehaviour
     public void GiveAirTank()
     {
         AirTank = true;
+        OpenInteractableFeedback(AirTankFeedback);
         MaxAir = MaxAir * 2;
         Debug.Log("GameManager: Air tank given");
+    }
+
+    public void OpenInteractableFeedback(GameObject feedback)
+    {
+        CloseInteractableFeedbacks();
+
+        feedback.SetActive(true);
+    }
+
+    void CloseInteractableFeedbacks()
+    {
+        if (DoorFeedback != null) { DoorFeedback.SetActive(false); } else { Debug.Log("DoorFeedback is null"); }
+        if (DoorFeedback != null) { DoorFeedbackFailed.SetActive(false); } else { Debug.Log("DoorFeedback is null"); }
+        if (JacketFeedback != null) { JacketFeedback.SetActive(false); } else { Debug.Log("JacketFeedback is null"); }
+        if (LifeJacketFeedback != null) { LifeJacketFeedback.SetActive(false); } else { Debug.Log("LifeJacketFeedback is null"); }
+        if (AirTankFeedback != null) { AirTankFeedback.SetActive(false); } else { Debug.Log("AirTankFeedback is null"); }
     }
 
     public void StartTutorial(GameObject tutorial)
     {
         // First we close all other tutorials to be sure they don't overlap.
-        WelcomeHome.SetActive(false);
-        RainTutorial.SetActive(false);
-        FloodWarningTutorial.SetActive(false);
+        CloseTutorials();
 
         // Then we open the desired tutorial.
         tutorial.SetActive(true);
+    }
+
+    void CloseTutorials()
+    {
+        // We close all other tutorials to be sure they don't overlap.
+        WelcomeHome.SetActive(false);
+        RainTutorial.SetActive(false);
+        FloodWarningTutorial.SetActive(false);
     }
 
     public bool WaterCheck(float yoffset)
@@ -365,10 +398,17 @@ public class GameManager : MonoBehaviour
     void FloodEnd()
     {
         Debug.Log("Flood finished");
-        FloodFinished = true;
         RainManager.GetComponent<RainScript>().RainIntensity = 0f;
-        if (!IsDead) { WinScreen.SetActive(true); }
+        FloodFinished = true;
+        if (!IsDead) { Win(); }
         
+    }
+
+    void Win()
+    {
+        WinScreen.SetActive(true);
+        CloseTutorials();
+        BodyTemperature = 260;
     }
 
     void WaterRise()
@@ -493,6 +533,7 @@ public class GameManager : MonoBehaviour
             {
                 IsFreezing = true;
                 TimeToDeath = StartTimeToDeath;
+                if (!Blackness.activeSelf) { Blackness.SetActive(true); } // Set blackness to active if it isn't already
             }
             else if (IsFreezing)
             {
@@ -500,12 +541,12 @@ public class GameManager : MonoBehaviour
                 {
                     TimeToDeath -= Time.deltaTime;
                     float Transparency = 1 - (TimeToDeath / StartTimeToDeath);
-                    if (Blackness != null) 
+                    if (Blackness.GetComponent<Image>() != null) 
                     {
-                        Blackness.color = new Color(0, 0, 0, Transparency);
+                        Blackness.GetComponent<Image>().color = new Color(0, 0, 0, Transparency);
                     }
 
-                    else if (Blackness == null) { Debug.LogError("Blackness is null."); }
+                    else if (Blackness.GetComponent<Image>() == null) { Debug.LogError("Blackness' image is null."); }
                     // Insert sounds for extra effect :D
                     // Fade to black...
                 }
@@ -513,6 +554,12 @@ public class GameManager : MonoBehaviour
                 {
                     Freeze(); // The player freezes to death.
                 }
+            }
+            else if ((Exposure >= 3 && !Jacket || Exposure >= 2 && Jacket) && IsFreezing)
+            {
+                if (Blackness.activeSelf) { Blackness.SetActive(false); } // Set blackness to inactive if it is active
+                Blackness.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+                IsFreezing = false;
             }
         }
     }
@@ -535,7 +582,7 @@ public class GameManager : MonoBehaviour
 
             if ((isCovered || RainManager.GetComponent<RainScript>().RainIntensity == 0) && Wetness > 0f)
             {
-                Wetness = Wetness - Time.deltaTime / 20;
+                Wetness -= Time.deltaTime / 20;
             }
 
         }

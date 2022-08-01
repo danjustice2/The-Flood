@@ -3578,17 +3578,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2411777645214983201, guid: f146f124d5268ca438584cf51d8d4b60, type: 3}
   m_PrefabInstance: {fileID: 1419178774}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &197075129 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 987305536088219232, guid: 588bfd6d3e9b24684a076243ab7fde7b, type: 3}
-  m_PrefabInstance: {fileID: 7245258421404406940}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &197180173
 GameObject:
   m_ObjectHideFlags: 0
@@ -11392,6 +11381,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 203242334825810476, guid: 2e239db96cb10c34e902557dcedccb79, type: 3}
   m_PrefabInstance: {fileID: 479316741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &775928373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5492843799811559245, guid: 588bfd6d3e9b24684a076243ab7fde7b, type: 3}
+  m_PrefabInstance: {fileID: 7245258421404406940}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &778227485
 PrefabInstance:
@@ -29092,13 +29086,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a70a0dd8222d4639b5dc879f8012dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeAtPeak: 15
+  TimeAtPeak: 20
   Manager: {fileID: 2086224549}
   TimeUntilStart: 60
   TimeUntilWarning: 30
   FloodWarning: {fileID: 894273321}
   RainManager: {fileID: 649403231}
-  RainStart: 7
+  RainStart: 15
   FloodFinished: 0
   WaterSpeed: 0.4
   WaterMaxHeight: 58
@@ -29132,10 +29126,15 @@ MonoBehaviour:
   Interactables: 0
   three: {fileID: 1053726959}
   TimeToDeath: 0
-  Blackness: {fileID: 197075129}
+  Blackness: {fileID: 0}
   WelcomeHome: {fileID: 1187951682}
   RainTutorial: {fileID: 2115843782}
   FloodWarningTutorial: {fileID: 1358704167}
+  DoorFeedback: {fileID: 1073899280}
+  DoorFeedbackFailed: {fileID: 2064072311}
+  JacketFeedback: {fileID: 1688609324}
+  LifeJacketFeedback: {fileID: 775928373}
+  AirTankFeedback: {fileID: 1325683950}
   Light: {fileID: 1726747326}
   MenuManager: {fileID: 1000465239}
   GodMode: 0

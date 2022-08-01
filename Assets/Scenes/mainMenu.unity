@@ -617,6 +617,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 3827684219476158672, guid: c3e37c1622f1e47699d62a8bc6dccedb, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 3827684219476158672, guid: c3e37c1622f1e47699d62a8bc6dccedb, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 5768041799675922393, guid: c3e37c1622f1e47699d62a8bc6dccedb, type: 3}
       propertyPath: m_Name
       value: Play
@@ -991,6 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadingWindow: {fileID: 1924618536}
+  LoadingBlackness: {fileID: 0}
   NonLoading: {fileID: 1982209041}
   GameManager: {fileID: 1871532507}
   SettingsMenu: {fileID: 1424157299}

@@ -10,13 +10,12 @@ public class AirTank : Interactable
     {
         Debug.Log("AirTank: asking gamemanager to give air tank");
         GameManager.GiveAirTank();
-        FeedbackMessage();
         gameObject.SetActive(false);
     }
 
     void Start()
     {
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         ItemName = "Air Tank";
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 }

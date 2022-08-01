@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FrontDoor : Interactable
 {
-    GameManager GameManager;
     [SerializeField] GameObject MaybeStayHome;
     [SerializeField] GameObject PlayerController;
+    GameManager GameManager;
 
     public override void Interact()
     {
@@ -18,7 +18,7 @@ public class FrontDoor : Interactable
         }
         else
         {
-            MaybeStayHome.SetActive(true);
+            GameManager.OpenInteractableFeedback(MaybeStayHome);
             ItemName = "Check back later";
         }
     }
@@ -33,8 +33,8 @@ public class FrontDoor : Interactable
 
     void Start()
     {
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         ItemName = "Go Outside";
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 }
 
