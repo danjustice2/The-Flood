@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/* This code is written by me with some help from the Unity Documentation */
+
 public class Menu : MonoBehaviour
 {
     [SerializeField] GameObject LoadingWindow;
@@ -13,45 +15,33 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject SettingsMenu;
     float timetofade;
 
-    public void LoadScene(string scene)
+    public void LoadScene(string scene) // Load the scene with the specified name.
     {
         Debug.Log("Showing loading screen.");
-        NonLoading.SetActive(false);
-        LoadingWindow.SetActive(true);
-        /*float starttime = 5;
-        timetofade = starttime;
-
-        Time.timeScale = 1f;
-
-        while (timetofade > 0)
-        {
-            float transparency = timetofade / starttime;
-            print(transparency);
-            LoadingBlackness.color = new Color(0, 0, 0, transparency);
-            timetofade -= Time.deltaTime;
-        }*/
+        NonLoading.SetActive(false); // This disables all UI elements other than the loading screen. I did this before I understood that I could have just placed the loading screen on top of everything else.
+        LoadingWindow.SetActive(true); // Activate the loading window. This goes away when the scene is loaded since it isn't enabled in the new scene.
 
         Debug.Log("Loading the scene.");
-        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single); // Load the scene.
     }
 
-    public void Settings()
+    public void Settings() // Open the settings menu
     {
         SettingsMenu.SetActive(true);
     }
 
-    public void ReloadScene()
+    public void ReloadScene() // Reload the current scene
     {
         Scene scene = SceneManager.GetActiveScene();
         LoadScene(scene.name);
     }
 
-    public void BackToGame()
+    public void BackToGame() // Toggle the escape menu
     {
         GameManager.GetComponent<GameManager>().ToggleEscMenu();
     }
 
-    public void Quit()
+    public void Quit() // Quit the game
     {
         Application.Quit();
     }

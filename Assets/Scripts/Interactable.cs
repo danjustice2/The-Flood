@@ -3,6 +3,14 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 
+/*
+
+This code was made by combining two tutorials and heavily customization:
+https://www.youtube.com/watch?v=9tePzyL6dgc Interactables
+https://www.youtube.com/watch?v=h0J4gs4DW5A Overriding
+
+*/
+
 public class Interactable : MonoBehaviour
 {
     public float radius = 3f;

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/* 
+This code was written by following a tutorial:
+https://www.youtube.com/watch?v=w4IMYgpqgdQ
+*/
+
 public class MouseLook : MonoBehaviour
 {
 

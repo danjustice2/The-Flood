@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This code is written by me */
+
 public class TutorialWindow : MonoBehaviour
 {
     [SerializeField] float Timer = 17f;
@@ -28,7 +30,7 @@ public class TutorialWindow : MonoBehaviour
 
     public virtual void ExtraFunction()
     {
-        // Placeholder. Used by other classes
+        // Placeholder. Used by child classes
     }
 
     private void OnEnable()
