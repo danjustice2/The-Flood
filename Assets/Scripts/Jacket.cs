@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This code is written by me */
+
 public class Jacket : Interactable
 {
     GameManager GameManager;

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using TMPro;
 
+/* This code is written by me */
+
 public class Settings : MonoBehaviour
 {
     [SerializeField] GameObject VolumeSlider;

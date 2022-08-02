@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
+/*
+This code was written by following a tutorial followed by heavy customization:
+https://www.youtube.com/watch?v=w4IMYgpqgdQ
+*/
+
 public class PlayerController : MonoBehaviour
 {
 

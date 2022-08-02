@@ -3,6 +3,8 @@
 // http://www.digitalruby.com
 //
 
+/* This code was imported verbatim from the Unity Asset Store */
+
 using UnityEngine;
 using System.Collections;
 
