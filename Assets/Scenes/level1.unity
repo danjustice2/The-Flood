@@ -33471,13 +33471,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeAtPeak: 15
   Manager: {fileID: 2086224549}
-  TimeUntilStart: 200
+  TimeUntilStart: 180
   TimeUntilWarning: 20
   FloodWarning: {fileID: 894273321}
   RainManager: {fileID: 449332670}
-  RainStart: 30
+  RainStart: 100
   FloodFinished: 0
-  WaterSpeed: 50
+  WaterSpeed: 0.4
   WaterMaxHeight: 57
   WaterMinHeight: 39
   Water: {fileID: 728334456}
@@ -33513,6 +33513,11 @@ MonoBehaviour:
   WelcomeHome: {fileID: 1187951682}
   RainTutorial: {fileID: 2115843782}
   FloodWarningTutorial: {fileID: 1358704167}
+  DoorFeedback: {fileID: 0}
+  DoorFeedbackFailed: {fileID: 0}
+  JacketFeedback: {fileID: 1670049906}
+  LifeJacketFeedback: {fileID: 1929389050}
+  AirTankFeedback: {fileID: 152067062}
   Light: {fileID: 705507994}
   MenuManager: {fileID: 1000465239}
   GodMode: 0
