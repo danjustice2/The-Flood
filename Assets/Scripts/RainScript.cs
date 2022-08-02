@@ -3,7 +3,8 @@
 // http://www.digitalruby.com
 //
 
-/* This code was imported verbatim from the Unity Asset Store */
+// Johnson, J. (2022). "Rain Maker - 2D and 3D Rain Particle System for Unity." from https://assetstore.unity.com/packages/vfx/particles/environment/rain-maker-2d-and-3d-rain-particle-system-for-unity-34938#description.	
+ 
 
 using UnityEngine;
 using System.Collections;

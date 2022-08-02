@@ -308,8 +308,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator GiveJacketCoroutine()
     // It's easier to understand this just by going in the game and seeing the animation
-    // Help from youtube: https://www.youtube.com/watch?v=YqMpVCPX2ls Master UI Animations
-    // And unity package: https://assetstore.unity.com/packages/tools/animation/leantween-3595 LeanTween
+    // References:
+    // Coco Code (2021). "Master UI ANIMATIONS! - Unity UI tutorial." from https://www.youtube.com/watch?v=YqMpVCPX2ls.
+    // Dented Pixel (2021). "LeanTween." from https://assetstore.unity.com/packages/tools/animation/leantween-3595.
+
     {
         GameObject ExposureWindow = GameObject.Find("Exposure");
 
@@ -733,8 +735,10 @@ public class GameManager : MonoBehaviour
     // This called by the RainTutorial.cs script... because it gets disabled right after it can't run Coroutines.
     // There was probably a more neat solution to this, but it wasn't a priority
     
-    // Help from youtube: https://www.youtube.com/watch?v=YqMpVCPX2ls Master UI Animations
-    // And unity package: https://assetstore.unity.com/packages/tools/animation/leantween-3595 LeanTween
+    // References:
+    // Coco Code (2021). "Master UI ANIMATIONS! - Unity UI tutorial." from https://www.youtube.com/watch?v=YqMpVCPX2ls.
+    // Dented Pixel (2021). "LeanTween." from https://assetstore.unity.com/packages/tools/animation/leantween-3595.
+
     {
         GameObject ExposureWindow = GameObject.Find("Exposure");
 

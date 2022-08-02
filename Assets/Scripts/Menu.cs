@@ -4,7 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-/* This code is written by me with some help from the Unity Documentation */
+/* 
+
+This code is written by me with some help from:
+Blackthornprod (2018). "How to make UI in UNITY - EASY TUTORIAL." from https://www.youtube.com/watch?v=_RIsfVOqTaE.
+Unity Technologies Unity Scripting Reference.
+	
+*/
 
 public class Menu : MonoBehaviour
 {

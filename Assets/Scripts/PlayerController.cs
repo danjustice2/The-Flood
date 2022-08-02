@@ -6,7 +6,8 @@ using TMPro;
 
 /*
 This code was written by following a tutorial followed by heavy customization:
-https://www.youtube.com/watch?v=w4IMYgpqgdQ
+Coder, B. (2021). "Unity 3D - New Input System, First Person Control." Retrieved 2. august, 2022, from https://www.youtube.com/watch?v=w4IMYgpqgdQ.
+
 */
 
 public class PlayerController : MonoBehaviour
