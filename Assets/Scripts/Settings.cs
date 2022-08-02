@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using TMPro;
 
-/* This code is written by me */
 
 public class Settings : MonoBehaviour
 {
@@ -36,6 +35,10 @@ public class Settings : MonoBehaviour
 
     private void Awake()
     {
+    /*
+        I learned how to use PlayerPrefs from:
+        Zgeb, B. (2021). "Persistent data: How to save your game states and settings." from https://blog.unity.com/technology/persistent-data-how-to-save-your-game-states-and-settings.
+    */
         volume = PlayerPrefs.GetFloat("Volume", defaultVolume);
         friendlyVolume = (int)Mathf.Round(volume * 100);
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", defaultSensitivity);
@@ -88,6 +91,10 @@ public class Settings : MonoBehaviour
     }
 
     void saveSettings()
+    /*
+        I learned how to use PlayerPrefs from:
+        Zgeb, B. (2021). "Persistent data: How to save your game states and settings." from https://blog.unity.com/technology/persistent-data-how-to-save-your-game-states-and-settings.
+    */
     {
         setValues();
         PlayerPrefs.SetFloat("Volume", volume);
