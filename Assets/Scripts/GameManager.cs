@@ -13,7 +13,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // There're a lot of variables going on there...
+    // There're a lot of variables going on here and I have made no real attempt at organising them...
+    // I recommend just skipping down to the Awake() function.
     [SerializeField] float TimeAtPeak = 40;
     [SerializeField] GameObject Manager;
     [SerializeField] float TimeUntilStart;

@@ -6,8 +6,8 @@ using System.Collections;
 /*
 
 This code was made by combining two tutorials and heavily customization:
-https://www.youtube.com/watch?v=9tePzyL6dgc Interactables
-https://www.youtube.com/watch?v=h0J4gs4DW5A Overriding
+Brackeys (2017). "INTERACTION - Making an RPG in Unity (E02)." from https://www.youtube.com/watch?v=9tePzyL6dgc.
+Unity (2019). "C# Overriding in Unity! - Intermediate Scripting Tutorial." from https://www.youtube.com/watch?v=h0J4gs4DW5A.
 
 */
 
